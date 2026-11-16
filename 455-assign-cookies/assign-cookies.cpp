@@ -4,11 +4,16 @@ public:
         int n = g.size(), m = s.size();
         sort(g.begin(),g.end());
         sort(s.begin(),s.end());
-        int i = 0, j = 0;
-        while(i < n && j < m){
-            if(s[j]>=g[i]) i++;
-            j++;
+        int ans = 0;
+        int j = 0;
+        for(int i = 0; i < n; i++){
+            while(j < m && s[j] < g[i]) j++;
+            if(j >= m) break;
+            if(s[j]>=g[i]){
+                ans++;
+                j++;
+            }
         }
-        return i;
+        return ans;
     }
 };
